@@ -2563,6 +2563,7 @@ AdWords.prototype.shim = function(){
 
 var integration = require('analytics.js-integration');
 var load = require('load-script');
+var onBody = require('on-body');
 
 /**
  * Expose plugin.
@@ -2607,7 +2608,9 @@ Bing.prototype.initialize = function(page){
       _write: function(s) {
         var version = s.match(/\d{6,}/);
         var url = '//flex.msn.com/mstag/mstag.' + version + '.js';
-        load(url);
+        onBody(function(){
+          load(url);
+        });
       }
     };
   }
@@ -2648,7 +2651,7 @@ Bing.prototype.track = function(track){
   });
 };
 
-}, {"analytics.js-integration":37,"load-script":38}],
+}, {"analytics.js-integration":37,"load-script":38,"on-body":36}],
 
 30: [function(require, module, exports) {
 
